@@ -1,73 +1,27 @@
+import java.util.Stack;
+
 public class PalindromeCheckerApp {
-
     public static void main(String[] args) {
-        String input = "A man a plan a canal Panama";
+        String input = "noon";
+        Stack<Character> stack = new Stack<>();
 
-        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
 
         boolean isPalindrome = true;
-        for (int i = 0; i < normalized.length() / 2; i++) {
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Input : ");
-        String input = scanner.nextLine();
-
-        PalindromeService service = new PalindromeService();
-        boolean result = service.checkPalindrome(input);
-
-        System.out.println("Is Palindrome? : " + result);
-        scanner.close();
->>>>>>> f184864 (Base application setup)
-    }
-}
-
-class PalindromeService {
-
-    public boolean checkPalindrome(String input) {
-        if (input == null) {
-            return false;
+        if (isPalindrome) {
+            System.out.println("The string \"" + input + "\" is a palindrome.");
+        } else {
+            System.out.println("The string \"" + input + "\" is NOT a palindrome.");
         }
-
-        int start = 0;
-        int end = input.length() - 1;
-
-        while (start < end) {
-            if (input.charAt(start) != input.charAt(end)) {
-                return false;
-            }
-            start++;
-            end--;
-        }
-
-        return true;
-    }
-}
-
-class PalindromeService {
-
-    public boolean checkPalindrome(String input) {
-        if (input == null) {
-            return false;
-        }
-
-        int start = 0;
-        int end = input.length() - 1;
-
-        while (start < end) {
-            if (input.charAt(start) != input.charAt(end)) {
-                return false;
-            }
-            start++;
-            end--;
-        }
-
-        return true;
     }
 }
