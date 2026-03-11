@@ -1,38 +1,38 @@
-import java.util.Stack;
+    import java.util.Stack;
 
-interface PalindromeStrategy {
-    boolean check(String input);
-}
+    interface PalindromeStrategy {
+        boolean check(String input);
+    }
 
-class StackStrategy implements PalindromeStrategy {
-    @Override
-    public boolean check(String input) {
-        if (input == null) return false;
+    class StackStrategy implements PalindromeStrategy {
+        @Override
+        public boolean check(String input) {
+            if (input == null) return false;
 
-        Stack<Character> stack = new Stack<>();
+            Stack<Character> stack = new Stack<>();
 
-        for (char c : input.toCharArray()) {
-            stack.push(c);
-        }
-
-        for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
-                return false;
+            for (char c : input.toCharArray()) {
+                stack.push(c);
             }
+
+            for (char c : input.toCharArray()) {
+                if (c != stack.pop()) {
+                    return false;
+                }
+            }
+            return true;
         }
-        return true;
     }
-}
 
-public class PalindromeCheckerApp {
-    public static void main(String[] args) {
-        String input = "level";
+    public class PalindromeCheckerApp {
+        public static void main(String[] args) {
+            String input = "level";
 
-        PalindromeStrategy strategy = new StackStrategy();
+            PalindromeStrategy strategy = new StackStrategy();
 
-        boolean isPalindrome = strategy.check(input);
+            boolean isPalindrome = strategy.check(input);
 
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+            System.out.println("Input : " + input);
+            System.out.println("Is Palindrome? : " + isPalindrome);
+        }
     }
-}
