@@ -1,16 +1,27 @@
-public class PalindromeCheckerApp {
-    public static void main(String[] args) {
-        String original = "madam";
-        String reversed = "";
+import java.util.Scanner;
 
+public class UseCasePalindromeCheckerApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("--- Palindrome Checker (UC3: String Reverse) ---");
+        System.out.print("Enter a string to check: ");
+        String original = scanner.nextLine();
+        String reversed = "";
         for (int i = original.length() - 1; i >= 0; i--) {
+
             reversed = reversed + original.charAt(i);
         }
 
-        if (original.equals(reversed)) {
-            System.out.println("The string \"" + original + "\" is a palindrome.");
+        System.out.println("Original: " + original);
+        System.out.println("Reversed: " + reversed);
+
+        if (original.equalsIgnoreCase(reversed)) {
+            System.out.println("Result: The string is a Palindrome.");
         } else {
-            System.out.println("The string \"" + original + "\" is NOT a palindrome.");
+            System.out.println("Result: The string is NOT a Palindrome.");
         }
+
+        scanner.close();
     }
 }
